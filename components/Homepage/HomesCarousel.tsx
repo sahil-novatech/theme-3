@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-// import { SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import styles from "@/styles/Homepage/HomeCarousel.module.scss";
-// import HomeDetailCard from "./HomeDetailCard";
+import HomeDetailCard from "./HomeDetailCard";
 import Heading from "../Heading";
 // import { Navigation } from "swiper/modules";
 // import { globalServices } from "@/services/global.services";
@@ -12,6 +12,7 @@ import { useQuery } from "@tanstack/react-query";
 // import { HomeData, HomeDataRes } from "@/src/types/propertyCard";
 import { Button, Link } from "@nextui-org/react";
 import HomeCardSkeleton from "./HomeCardSkeleton";
+import { HomeData } from "@/src/types/propertyCard";
 
 async function fetchProperties() {
   // const res = await globalServices.getAll(`/properties${recent? "/recent" : ""}?limit=8`)
@@ -2583,6 +2584,11 @@ const HomesCarousel = ({ recent }: Props) => {
               <HomeCardSkeleton />
             </>
           : null}
+            {properties?.data && properties.data.map((home: HomeData) =>
+                <SwiperSlide key={home.listingKey}>
+                    <HomeDetailCard {...home} />
+                </SwiperSlide>
+            )}
         </div>
         {/* </Swiper> */}
         <div className="flex justify-center mt-[50px]">

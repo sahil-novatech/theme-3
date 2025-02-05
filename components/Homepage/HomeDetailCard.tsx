@@ -21,7 +21,7 @@ interface CardProps {
   address: string | null;
   beds: number;
   baths: number;
-  sqft: number;
+  sqft: number | string;
   featured?: boolean;
   listingKey: string;
   transactionType: string;

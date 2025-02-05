@@ -6,7 +6,7 @@ export interface ImageData {
 
 export interface HomeData {
   title: string;
-  sqft: number;
+  sqft: number | string;
   beds: number;
   baths: number;
   images: string[];
