@@ -1,0 +1,130 @@
+.section {
+  margin-bottom: 30px !important;
+  border-radius: 16px;
+  border: 1px solid #ebebeb;
+  padding: 31px 40px 38px;
+}
+
+.pieChart {
+  display: flex;
+  gap: 55px;
+  margin-bottom: 26px;
+  .text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    margin-bottom: 4px;
+  }
+}
+
+.wrapNote {
+  display: flex;
+  gap: 59px;
+  padding-top: 100px;
+}
+
+.wrapFile {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  a {
+    width: 100%;
+    max-width: 301px;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+    padding: 20px 20px 18px;
+    border: 1px solid #ebebeb;
+    border-radius: 8px;
+  }
+  :global(.name) {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: #1a1a1a;
+    margin-top: 1px;
+    margin-bottom: 3px;
+  }
+  :global(.size) {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #1f4b43;
+  }
+}
+
+.energyList {
+  margin-bottom: 40px;
+}
+
+.energyList > div:nth-child(even) {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.headTitle {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  color: #000;
+
+  :global(.forSale) {
+    background-color: #1f4b43;
+    color: #FFF;
+    padding: 9px 15px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    border-radius: 120px;
+  }
+
+  :global(.list-tags) {
+    margin-bottom: 8px;
+    display: flex;
+    gap: 10px;
+  }
+
+  :global(.featured) {
+    background-color: #e7c873;
+    color: #1a1a1a;
+    padding: 9px 15px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    border-radius: 120px;
+  }
+
+  :global(.text-content) {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  :global(.square) {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    text-align: right;
+    margin-top: -4px;
+    margin-bottom: 4px;
+  }
+
+  :global(.price) {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 36px;
+    text-align: right;
+  }
+
+  :global(.list-icons-page > div) {
+    border: 1px solid #FFF;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}

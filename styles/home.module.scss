@@ -1,0 +1,22 @@
+.filterContainer {
+  position: relative;
+  border-radius: 24px;
+  background-image: url(../public/images/slider/slider-home-1.jpg);
+  background-attachment: fixed;
+  padding-top: 259px;
+  padding-bottom: 237px;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(26, 26, 26, 0.8) 0%, rgba(26, 26, 26, 0.1) 61.39%, rgba(26, 26, 26, 0) 100%);
+  }
+}

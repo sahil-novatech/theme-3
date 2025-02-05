@@ -1,0 +1,19 @@
+.formContainer {
+  @apply flex flex-col gap-4;
+}
+
+.formInput {
+  @apply mb-4;
+}
+
+.submitButton {
+  @apply bg-yellow-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-yellow-600;
+}
+
+.ratingContainer {
+  @apply flex flex-col gap-1;
+}
+
+.checkboxContainer {
+  @apply flex gap-2 items-center;
+}

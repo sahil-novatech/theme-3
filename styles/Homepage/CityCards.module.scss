@@ -1,0 +1,62 @@
+.cityGrid {
+  @apply grid grid-cols-4 gap-6 mt-8;
+}
+
+.card {
+  @apply relative overflow-hidden rounded-lg shadow-lg;
+  transition: all .3s ease;
+}
+
+.card:hover .cardImage {
+  transform: scale3d(1.1, 1.1, 1.1);
+  transition: all 2s cubic-bezier(.3,1,.35,2) 0s;
+}
+
+.card:hover .cityLink {
+  visibility: visible;
+  opacity: 1;
+}
+
+.cardImage {
+  @apply w-full object-cover;
+  transition: all 1s cubic-bezier(.3,1,.35,1) 0s;
+}
+
+.card::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(26, 26, 26, .8), rgba(26, 26, 26, .1) 61.39%, rgba(26, 26, 26, 0));
+}
+
+.cardContent {
+  @apply absolute top-4 left-4 text-white z-[1];
+}
+
+.cardTitle {
+  @apply text-lg font-bold;
+}
+
+.cardSubtitle {
+  @apply text-sm font-medium;
+}
+
+.cityLink {
+  position: absolute;
+  left: 50px;
+  bottom: 40px;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFF;
+  transition: all .3s ease;
+}

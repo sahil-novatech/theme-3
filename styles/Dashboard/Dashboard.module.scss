@@ -1,0 +1,72 @@
+.gridSection {
+  display: grid !important;
+  grid-gap: 20px;
+  gap: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  @media (max-width: 1440px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.gridContent {
+  padding: 39px;
+  border-radius: 24px;
+  border: 1px solid #ebebeb;
+  background-color: #fff;
+  cursor: pointer;
+
+  &:hover .imageContainer::before {
+    width: 90px;
+    height: 90px;
+  }
+
+  & .totalTitle {
+    color: #1a1a1a;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 47px;
+  }
+
+  & .titleText {
+    color: #1f4b43;
+    margin-top: 4px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  & .imageContainer {
+    position: relative;
+    z-index: 1;
+    &::before {
+      position: absolute;
+      content: "";
+      bottom: -10px;
+      left: -20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #e7c873;
+      transition: all .3s ease;
+    }
+    & svg {
+      z-index: 11;
+      position: relative;
+    }
+  }
+}
+
+.contentBox {
+  padding: 39px;
+  border-radius: 24px;
+  border: 1px solid #ebebeb;
+}
+
+.dummyImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  flex-shrink: 0;
+}

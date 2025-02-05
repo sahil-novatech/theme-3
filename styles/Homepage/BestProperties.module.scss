@@ -1,0 +1,21 @@
+.imageContainer {
+  position: relative;
+}
+
+.imageContainer::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(26, 26, 26, 0), rgba(26, 26, 26, .1) 61.39%, rgba(26, 26, 26, .8));
+  z-index: 5;
+  transition: all .3s ease;
+}
+
+.imageBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

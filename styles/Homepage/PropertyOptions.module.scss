@@ -1,0 +1,23 @@
+.footerBtn {
+  margin: 20px 0 28px;
+  .button {
+    background-color: #e7c87350;
+    font-size: 16px;
+    margin-right: 24px;
+    padding: 9px 33px 10px;
+    border-radius: 100px;
+  }
+  .button.active {
+    background-color: #e7c873;
+  }
+}
+
+.link {
+  width: max-content;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 40px;
+  color: #1a1a1a;
+  position: relative;
+  text-transform: capitalize;
+}

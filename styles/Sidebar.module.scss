@@ -1,0 +1,38 @@
+.leftMenu {
+  position: sticky;
+  top: 141px;
+  left: 20px;
+  bottom: 20px;
+  width: 331px;
+  border-radius: 24px;
+  padding: 40px;
+  background-color: #1f4b43;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease;
+
+  & ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    & .active {
+      background: hsla(0, 0%, 100%, .051);
+      transition: all .3s ease;
+      border-radius: 12px;
+    }
+
+    & a, button {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: 10px;
+      height: 60px;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      color: #FFF;
+      padding-left: 20px;
+    }
+  }
+}
