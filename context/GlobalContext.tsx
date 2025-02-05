@@ -41,7 +41,7 @@ async function fetchConfiguration() {
         "default_user_id": 1
     },
     "website": {
-        "id": 2,
+        "id": "2",
         "agent_name": "Adnan",
         "address": "Lucknow",
         "phone": "+918460937300",
@@ -377,7 +377,12 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
       menu: {},
     },
     preDefinedSearches: {},
-    popularCities: [],
+    popularCities: [
+        {
+            title: '',
+            url: ''
+        }
+    ],
     website: {
       id: "",
       agent_name: "",

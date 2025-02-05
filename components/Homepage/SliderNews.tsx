@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 import Heading from '../Heading';
 import styles from '@/styles/Homepage/SliderNews.module.scss';
 import { Navigation } from 'swiper/modules';
-import { globalServices } from "@/services/global.services";
+// import { globalServices } from "@/services/global.services";
 import { useQuery } from "@tanstack/react-query";
 import { BlogData } from "@/src/types/blog";
 import BlogDetailCard from "../BlogList/BlogDetailCard";
@@ -85,7 +85,7 @@ import { Button } from "@nextui-org/react";
 async function fetchBlogs() {
   // const abc = await globalServices.getAll(`/public/blogs`)
   // console.log(abc,"hello world")
-  let abc = {
+  return {
     "data": {
         "total": 28,
         "blogs": {
@@ -260,7 +260,6 @@ async function fetchBlogs() {
     },
     "request": {}
 }
-  return abc
 }
 
 export default function SliderNews() {

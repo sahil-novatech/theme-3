@@ -6,8 +6,8 @@ import { Card } from "@nextui-org/react";
 import Heading from "../Heading";
 import Link from "next/link";
 import { RightIcon } from "../Icons/Icons";
-import { globalServices } from "@/services/global.services";
-import { useQuery } from "@tanstack/react-query";
+// import { globalServices } from "@/services/global.services";
+// import { useQuery } from "@tanstack/react-query";
 
 interface City {
   name: string;
@@ -33,13 +33,30 @@ const images: string[] = [
   "/images/image-box/cities-6.jpg",
 ]
 
-async function fetchPopularCities() {
+// async function fetchPopularCities() {
   // const res = await globalServices.getAll(`/top-cities`)
-  let data = [
+//   let data = [
+// ]
+// return data;
+  // if (res.status === 200) {
+  //   return res.data;
+  // } else {
+  //   return []
+  // }
+// }
+
+const CityCards: React.FC = () => {
+  // const cities = useQuery({
+  //   queryKey: ['Popular Cities'],
+  //   queryFn: fetchPopularCities,
+  //   staleTime: 1000 * 60 * 5,
+  // })
+
+  const cityData = [
     {
-        "name": "Toronto",
-        "thumbnail": null,
-        "count": 42981
+      "name": "Toronto",
+      "thumbnail": null,
+      "count": 42981
     },
     {
         "name": "Mississauga",
@@ -86,21 +103,7 @@ async function fetchPopularCities() {
         "thumbnail": null,
         "count": 2428
     }
-]
-return data;
-  // if (res.status === 200) {
-  //   return res.data;
-  // } else {
-  //   return []
-  // }
-}
-
-const CityCards: React.FC = () => {
-  const cities = useQuery({
-    queryKey: ['Popular Cities'],
-    queryFn: fetchPopularCities,
-    staleTime: 1000 * 60 * 5,
-  })
+  ]
 
   return (
     <section className="idx-container">
@@ -109,7 +112,7 @@ const CityCards: React.FC = () => {
         <Heading title="Find Properties in These Cities" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."  />
 
         <div className={styles.cityGrid}>
-          {cities?.data?.length > 0 && cities.data.map((city: City, index: number) => (
+          {cityData.map((city: City, index: number) => (
             <div
               key={city.name}
               className={`${styles.card} wow animate__animated animate__fadeInUp col-span-2`}

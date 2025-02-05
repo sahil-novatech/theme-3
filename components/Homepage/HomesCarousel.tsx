@@ -1,19 +1,19 @@
 "use client";
 import React from "react";
-import { SwiperSlide } from "swiper/react";
+// import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import styles from "@/styles/Homepage/HomeCarousel.module.scss";
-import HomeDetailCard from "./HomeDetailCard";
+// import HomeDetailCard from "./HomeDetailCard";
 import Heading from "../Heading";
 // import { Navigation } from "swiper/modules";
-import { globalServices } from "@/services/global.services";
+// import { globalServices } from "@/services/global.services";
 import { useQuery } from "@tanstack/react-query";
-import { HomeData, HomeDataRes } from "@/src/types/propertyCard";
+// import { HomeData, HomeDataRes } from "@/src/types/propertyCard";
 import { Button, Link } from "@nextui-org/react";
 import HomeCardSkeleton from "./HomeCardSkeleton";
 
-async function fetchProperties(recent?: boolean) {
+async function fetchProperties() {
   // const res = await globalServices.getAll(`/properties${recent? "/recent" : ""}?limit=8`)
   // if (res.status === 200 && res.data.data) {
   //   const propertyData = res.data.data.length > 0 ? res.data.data.map((data: HomeDataRes) => ({
@@ -33,7 +33,7 @@ async function fetchProperties(recent?: boolean) {
   //   return []
   // }
 
-  let data = [
+  const data = [
     {
         "feed_type": "idx",
         "ListingKey": "X11957774",
@@ -2535,12 +2535,12 @@ async function fetchProperties(recent?: boolean) {
         ]
     }
 ] 
-const propertyData = data.length > 0 ? data.map((data: HomeDataRes) => ({
+const propertyData = data.length > 0 ? data.map((data) => ({
       title: data.CityRegion ?? data.City ?? "",
       sqft: data.LivingAreaRange ?? 0,
       beds: data.BedroomsTotal ?? 0,
       baths: data.BathroomsTotalInteger ?? 0,
-      images: data.images?.length > 0 ? data.images.map((image: { order: number; image_url: string}) => image.image_url) : [],
+      images: data.images?.length > 0 ? data.images.map((image) => image.image_url) : [],
       address: data.UnparsedAddress,
       price: (data.ListPrice ?? 0).toLocaleString("en-US"),
       listingKey: data.ListingKey,
@@ -2557,7 +2557,7 @@ interface Props {
 const HomesCarousel = ({ recent }: Props) => {
   const properties = useQuery({
     queryKey: ["excludedQueryKey", "properties", recent],
-    queryFn: () => fetchProperties(recent),
+    queryFn: () => fetchProperties(),
     staleTime: 1000 * 60 * 5,
   })
 
@@ -2582,11 +2582,7 @@ const HomesCarousel = ({ recent }: Props) => {
               <HomeCardSkeleton />
               <HomeCardSkeleton />
             </>
-          : (properties.data?.length > 0 && properties.data.map((home: HomeData) => (
-            <SwiperSlide key={home.listingKey}>
-              <HomeDetailCard {...home} />
-            </SwiperSlide>
-          )))}
+          : null}
         </div>
         {/* </Swiper> */}
         <div className="flex justify-center mt-[50px]">

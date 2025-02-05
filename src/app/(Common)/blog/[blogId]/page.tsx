@@ -6,5 +6,5 @@ export default async function BlogPage({
   params: Promise<{ blogId: string }>
 }) {
   const { blogId } = await params;
-  return blogId ? <Blog blogId={blogId} /> : null;
+  return blogId ? <Blog /> : null;
 }

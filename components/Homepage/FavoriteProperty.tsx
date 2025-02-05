@@ -27,7 +27,7 @@ async function fetchFavoriteProperties() {
       sqft: data.LivingAreaRange ?? 0,
       beds: data.BedroomsTotal ?? 0,
       baths: data.BathroomsTotalInteger ?? 0,
-      images: data.images?.length > 0 ? data.images.map((image: { order: number; image_url: string}) => image.image_url) : [],
+      images: data.images?.length > 0 ? data.images.map((image) => image.image_url) : [],
       address: data.UnparsedAddress,
       price: (data.ListPrice ?? 0).toLocaleString("en-US"),
       listingKey: data.ListingKey,

@@ -18,7 +18,7 @@ interface CardProps {
   images: string[];
   title: string;
   price: string;
-  address: string;
+  address: string | null;
   beds: number;
   baths: number;
   sqft: number;

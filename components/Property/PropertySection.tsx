@@ -3,11 +3,11 @@ import styles from "@/styles/Property/PropertySection.module.scss";
 // import { Pagination, Select, SelectItem } from "@nextui-org/react";
 import HomeDetailCard from "../Homepage/HomeDetailCard";
 import { useQuery } from "@tanstack/react-query";
-import { globalServices } from "@/services/global.services";
+// import { globalServices } from "@/services/global.services";
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import HomeCardSkeleton from "../Homepage/HomeCardSkeleton";
-import { HomeData, HomeDataRes, ImageData } from "@/src/types/propertyCard";
+// import { HomeData } from "@/src/types/propertyCard";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Select, SelectItem } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
@@ -20,7 +20,7 @@ function capitalizeFirstLetter(str: string) {
   .join(", ");
 }
 
-async function fetchProperties(page: number, filterQuery: string) {
+function fetchProperties() {
   // const res = await globalServices.getAll(`/properties?page=${page}${filterQuery}&limit=24`)
   // if (res.status === 200 && res.data.data) {
   //   const propertyData = res.data.data.length > 0 ? res.data.data.map((data: HomeDataRes) => ({
@@ -7165,36 +7165,30 @@ async function fetchProperties(page: number, filterQuery: string) {
     },
     "request": {}
 }
-  const propertyData = res.data.data.length > 0 ? res.data.data.map((data: HomeDataRes) => ({
+  const propertyData = res.data.data.length > 0 ? res.data.data.map((data) => ({
       title: data.CityRegion ?? data.City ?? "",
       sqft: data.LivingAreaRange ?? 0,
       beds: data.BedroomsTotal ?? 0,
       baths: data.BathroomsTotalInteger ?? 0,
-      images: data.images?.length > 0 ? data.images.map((image: ImageData) => image.image_url) : [],
+      images: data.images?.length > 0 ? data.images.map((image) => image.image_url) : [],
       address: data.UnparsedAddress,
       price: (data.ListPrice ?? 0).toLocaleString("en-US"),
       listingKey: data.ListingKey,
       transactionType: data.TransactionType ?? "",
       isFavorite: data.is_favorite ?? false,
     })) : []
-    return ({
-      data: {
-        ...res.data,
-        data: propertyData,
-        meta: []
-      },
-    });
+    return propertyData
 }
 
 export default function PropertySection() {
   const searchParams = useSearchParams();
   const [page, setPage] = useState(1);
-  const [propertiesData, setPropertiesData] = useState<HomeData[]>([]);
+  const propertiesData = fetchProperties();
   const [filterQuery, setFilterQuery] = useState<string>("");
   const [sortData, setSortData] = useState("ListPrice desc");
-  const [hasMorePage, setHasMorePage] = useState(false);
+  const [hasMorePage] = useState(false);
   const [dataFetched, setDataFetched] = useState(false);
-  const [total, setTotal] = useState(0);
+  const [total] = useState(0);
   const [resultTexts, setResultTexts] = useState("");
   const router = useRouter();
   const pathname = usePathname()
@@ -7273,31 +7267,31 @@ export default function PropertySection() {
   const properties = useQuery({
     queryKey: [page.toString(), filterQuery, 'properties-data'],
     enabled: dataFetched,
-    queryFn: () => fetchProperties(page, filterQuery),
+    queryFn: () => fetchProperties(),
     staleTime: 1000 * 60 * 5,
   })
 
-  useEffect(() => {
-    if(properties?.data?.data){
-      if(properties.data.data.links){
-        const hasNext = !!properties.data.data.links.next;
-        // setHasMorePage(hasNext)
-      }
-      setTotal(properties.data.data.meta.total);
-      setPropertiesData((data: HomeData[]) => properties.data.data.meta.current_page === 1 ? properties.data.data.data : ([...data, ...properties.data.data.data]))
-    }
-  }, [properties?.data?.data])
+//   useEffect(() => {
+//     if(properties?.data?.data){
+//       if(properties.data.data.links){
+//         const hasNext = !!properties.data.data.links.next;
+//         // setHasMorePage(hasNext)
+//       }
+//       setTotal(properties.data.data.meta.total);
+//       setPropertiesData(properties.data.data.data)
+//     }
+//   }, [properties?.data?.data])
 
   return (
     <div className="w-full mt-6">
       {propertiesData.length > 0 && <div className="flex items-start justify-between wow animate__animated animate__fadeInUp">
         <div>
-          {properties?.isLoading ? <></>
-            : <>
+          {/* {properties?.isLoading ? <></>
+            : <> */}
               <p className="font-bold text-[20px]">{total ? `Total ${total} Listings Found` : "No Listing Found"}</p>
               <p className="font-semibold">{resultTexts}</p>
-            </>
-          }
+            {/* </>
+          } */}
         </div>
         <Select
           className={`${styles.sortDropdown}`}
@@ -7331,7 +7325,7 @@ export default function PropertySection() {
             </>}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-4">
-              {propertiesData.map((home: HomeData) => <HomeDetailCard key={home.listingKey} {...home} />)}
+              {propertiesData.map((home) => <HomeDetailCard key={home.listingKey} {...home} />)}
             </div>
           </InfiniteScroll>
         }

@@ -1,6 +1,7 @@
 export interface ImageData {
-  order: number;
+  Order: number;
   image_url: string;
+  ImageSizeDescription?: string;
 }
 
 export interface HomeData {
