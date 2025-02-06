@@ -26,9 +26,9 @@ import moment from "moment";
 export default function Blog() {
   const blogData = {
     "id": "678fb12854885c23e2014a42",
-    "title": "new blog",
-    "slug": "new-blog",
-    "content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ‘lorem ipsum’ will uncover many web sites still in their infancy",
+    "title": "How to Sell Your Home Faster: Top Tips for a Successful Sale",
+    "slug": "How-to-Sell-Your-Home-Faster",
+    "content": "Selling a home is an exciting process, but it can be overwhelming if you don’t know where to start. In this post, you can offer tips on how sellers can prepare their homes for a quick sale: The importance of curb appeal: simple upgrades that make a difference. Staging your home: How to make every room feel spacious and inviting. Pricing strategies: Setting the right price to attract buyers. Marketing your home effectively: From professional photos to virtual tours. Working with a real estate agent: How to find the right one for your needs.",
     "image": null,
     "posted_at": "2025-01-21T14:37:28.096000Z"
   }

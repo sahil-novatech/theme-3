@@ -230,7 +230,6 @@ export default function Details({ propertyDetail }: { propertyDetail: HomeDataRe
     { label: 'Topography', value: propertyDetail?.Topography?.join(", ") ?? "NA"},
     { label: 'Waterfront', value: propertyDetail?.Waterfront?.join(", ") ?? "NA"},
   ]
-
   return (
     <>
       <div className={styles.section}>
@@ -517,7 +516,15 @@ export default function Details({ propertyDetail }: { propertyDetail: HomeDataRe
       {propertyDetail?.UnparsedAddress && 
         <div className={styles.section}>
           <h4 className="text-xl font-semibold mb-4">Map</h4>
-          <iframe src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_MAP_KEY}&q=${encodeURIComponent(propertyDetail?.UnparsedAddress)}`} title='google map' height={400} style={{ border: 0, width: "100%" }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+          <iframe
+            className="gmap_iframe"
+            width="100%"
+            height="400"
+            frameBorder="0"
+            scrolling="no"
+            src="https://maps.google.com/maps?width=990&height=400&hl=en&q=toronto&t=&z=14&ie=UTF8&iwloc=B&output=embed"
+            title="Google Map"
+          ></iframe>
         </div>
       }
 
