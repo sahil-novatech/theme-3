@@ -149,7 +149,7 @@ const FilterBar = () => {
   const [minPrice, setMinPrice] = useState<string>("");
   const [maxPrice, setMaxPrice] = useState<string>("");
   const [searchType, setSearchType] = useState<string>("search");
-  const [inputChanged, setInputChanged] = useState<boolean>(false);
+  // const [inputChanged, setInputChanged] = useState<boolean>(false);
 
   useEffect(() => {
     const id = setTimeout(() => setInputValue(searchValue), 500);
@@ -184,7 +184,7 @@ const FilterBar = () => {
   const properties = useQuery({
     queryKey: ['excludedQueryKey', inputValue],
     queryFn: () => inputValue && fetchProperties(inputValue),
-    enabled: inputChanged,
+    enabled: false,
     staleTime: 1000 * 60 * 5,
   })
 
@@ -299,7 +299,6 @@ const FilterBar = () => {
           onInputChange={(value) => {
             setSearchType('search')
             setSearchValue(value);
-            setTimeout(() => setInputChanged(true), 700);
           }}
           isClearable={false}
           listboxProps={{

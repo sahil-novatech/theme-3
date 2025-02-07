@@ -113,7 +113,7 @@ async function fetchConfiguration() {
             },
             "sell": {
                 "title": "Sell",
-                "url": "/sell"
+                "url": "#"
             },
             "blogs": {
                 "title": "Blogs",

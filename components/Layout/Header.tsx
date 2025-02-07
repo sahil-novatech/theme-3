@@ -30,7 +30,7 @@ import { AutoSuggestionData } from '@/src/types/suggestion';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useGlobalContext } from '@/context/GlobalContext';
 import handleURL from '@/utils/common';
-import { Loading } from '../Loading';
+// import { Loading } from '../Loading';
 import SignPopup from '../SignPopup';
 import { useLoginModalContext } from '@/context/LoginModalContext';
 import AfterAfterSignPopup from '../AfterSignPopup';
@@ -109,10 +109,10 @@ const Header: React.FC = () => {
     staleTime: 1000 * 60 * 5,
   })
 
-  const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setShowDropdown(true);
-    setInputValue(e.target.value);
-  }
+  // const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setShowDropdown(true);
+  //   setInputValue(e.target.value);
+  // }
 
   return (
     <>
@@ -135,11 +135,7 @@ const Header: React.FC = () => {
                 startContent={<FaSearch />}
                 placeholder="Enter a City, Neighborhood, Address, MLS"
                 className="hidden md:flex w-80 text-black bg-white rounded-full"
-                aria-label="Search input"
-                value={inputValue}
-                onChange={handleSearchInput}
-                onClick={() => setShowDropdown(true)}
-                endContent={properties.isLoading ? <Loading /> : null}
+                aria-label="Search input"                
               />
               {showDropdown && properties?.data?.data && typeof properties.data.data === 'object' && !(Object.values(properties.data.data).every(arr => Array.isArray(arr) && arr.length === 0)) && (
                 <ul className="absolute bg-white border border-gray-300 mt-2 w-full rounded shadow-lg z-10 overflow-auto max-h-[282px]">

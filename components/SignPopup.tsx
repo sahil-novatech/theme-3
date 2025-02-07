@@ -9,10 +9,10 @@ import {
 import styles from "@/styles/SignPopup.module.scss";
 import { useEffect, useState } from "react";
 // import Link from "next/link";
-import { globalServices } from "@/services/global.services";
+// import { globalServices } from "@/services/global.services";
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from "react-icons/md";
-import Swal from 'sweetalert2'
-import { useGlobalContext } from "@/context/GlobalContext";
+// import Swal from 'sweetalert2'
+// import { useGlobalContext } from "@/context/GlobalContext";
 import { useLoginModalContext } from "@/context/LoginModalContext";
 
 const inputClass = { input: "h-[54px] px-[6px]", inputWrapper: "h-[54px]" };
@@ -27,8 +27,8 @@ const initialErrors = {
 };
 
 export default function SignPopup() {
-  const {isOpen, onOpenChange, onClose, onMetaOpen } = useLoginModalContext();
-  const [isLoading, setIsLoading] = useState(false);
+  const {isOpen, onOpenChange } = useLoginModalContext();
+  // const [isLoading, setIsLoading] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -40,7 +40,7 @@ export default function SignPopup() {
   const [isChecked, setIsChecked] = useState(false);
   const [errors, setErrors] = useState(initialErrors);
   const [isForgot, setIsForgot] = useState(false);
-  const { setUser, setHasToken } = useGlobalContext();
+  // const { setUser, setHasToken } = useGlobalContext();
 
   const resetForm = () => {
     setErrors(initialErrors);
@@ -55,94 +55,94 @@ export default function SignPopup() {
   };
 
   const handleForgotPassword = () => {
-    setIsLoading(true);
-    globalServices.post("/forgot-password", { email, redirect_url: window.location.origin })
-    .then((res) => {
-      if(res.status === 200){
-        Swal.fire({
-          title: "Reset password link sent to your mail",
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        resetForm();
-        onClose();
-        setIsForgot(false);
-      }
-      setIsLoading(false);
-    })
-    .catch((err) => {
-      if (err.status === 422) {
-        if (err.response.data.errors) {
-          setErrors((errors) => ({ ...errors, ...err.response.data.errors }));
-        }
-      }
-      setIsLoading(false);
-    });
+    // setIsLoading(true);
+    // globalServices.post("/forgot-password", { email, redirect_url: window.location.origin })
+    // .then((res) => {
+    //   if(res.status === 200){
+    //     Swal.fire({
+    //       title: "Reset password link sent to your mail",
+    //       icon: 'success',
+    //       showConfirmButton: false,
+    //       timer: 1500
+    //     })
+    //     resetForm();
+    //     onClose();
+    //     setIsForgot(false);
+    //   }
+    //   setIsLoading(false);
+    // })
+    // .catch((err) => {
+    //   if (err.status === 422) {
+    //     if (err.response.data.errors) {
+    //       setErrors((errors) => ({ ...errors, ...err.response.data.errors }));
+    //     }
+    //   }
+    //   setIsLoading(false);
+    // });
   }
 
   const handleLogin = () => {
-    globalServices.post("/login", { email, password })
-    .then((res) => {
-      if (res.status === 200) {
-        resetForm();
-        onClose();
-        localStorage.setItem('token', res.data.data.token);
-        setUser(res.data.data.user);
-        if(!res.data.data.user.customer_meta_filled){
-          onMetaOpen();
-        }
-        setHasToken(true);
-        Swal.fire({
-          title: 'Login Successfully!',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500
-        })
-      }
-      setIsLoading(false);
-    })
-    .catch((err) => {
-      if (err.status === 422) {
-        if (err.response.data.errors) {
-          setErrors((errors) => ({ ...errors, ...err.response.data.errors }));
-        }
-      }
-      setIsLoading(false);
-    });
+    // globalServices.post("/login", { email, password })
+    // .then((res) => {
+    //   if (res.status === 200) {
+    //     resetForm();
+    //     onClose();
+    //     localStorage.setItem('token', res.data.data.token);
+    //     setUser(res.data.data.user);
+    //     if(!res.data.data.user.customer_meta_filled){
+    //       onMetaOpen();
+    //     }
+    //     setHasToken(true);
+    //     Swal.fire({
+    //       title: 'Login Successfully!',
+    //       icon: 'success',
+    //       showConfirmButton: false,
+    //       timer: 1500
+    //     })
+    //   }
+    //   setIsLoading(false);
+    // })
+    // .catch((err) => {
+    //   if (err.status === 422) {
+    //     if (err.response.data.errors) {
+    //       setErrors((errors) => ({ ...errors, ...err.response.data.errors }));
+    //     }
+    //   }
+    //   setIsLoading(false);
+    // });
   };
 
   const handleSignup = () => {
-    setIsLoading(true);
-    globalServices
-      .post("/register", { name, email, phone, password, password_confirmation: rePassword })
-      .then((res) => {
-        if (res.status === 200) {
-          resetForm();
-          onClose();
-          localStorage.setItem('token', res.data.data.token);
-          setUser(res.data.data.user);
-          if(!res.data.data.user.customer_meta_filled){
-            onMetaOpen();
-          }
-          setHasToken(true);
-          Swal.fire({
-            title: 'Registered Successfully!',
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 1500
-          })
-        }
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        if (err.status === 422) {
-          if (err.response.data.errors) {
-            setErrors((errors) => ({ ...errors, ...err.response.data.errors }));
-          }
-        }
-        setIsLoading(false);
-      });
+    // setIsLoading(true);
+    // globalServices
+    //   .post("/register", { name, email, phone, password, password_confirmation: rePassword })
+    //   .then((res) => {
+    //     if (res.status === 200) {
+    //       resetForm();
+    //       onClose();
+    //       localStorage.setItem('token', res.data.data.token);
+    //       setUser(res.data.data.user);
+    //       if(!res.data.data.user.customer_meta_filled){
+    //         onMetaOpen();
+    //       }
+    //       setHasToken(true);
+    //       Swal.fire({
+    //         title: 'Registered Successfully!',
+    //         icon: 'success',
+    //         showConfirmButton: false,
+    //         timer: 1500
+    //       })
+    //     }
+    //     setIsLoading(false);
+    //   })
+    //   .catch((err) => {
+    //     if (err.status === 422) {
+    //       if (err.response.data.errors) {
+    //         setErrors((errors) => ({ ...errors, ...err.response.data.errors }));
+    //       }
+    //     }
+    //     setIsLoading(false);
+    //   });
   };
 
   const validatePassword = () => {
@@ -343,7 +343,7 @@ export default function SignPopup() {
               </div>
               <Button
                 onPress={submitForm}
-                isDisabled={isLoading}
+                
                 className="mb-[22px] idx-button h-[54px] !w-full"
               >
                 {isForgot ? "Reset Password" : isLogin ? "Login" : "Register"}
